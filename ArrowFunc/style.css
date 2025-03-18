@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h5 {
+  text-align: center;
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  margin: 10% auto;
+  transition: 0.3s width, 0.3s heigth 0.3s, 0.3s margin-top 0.3s, 0.5s background-color;
+}
+
+.sizee {
+  width: 150px;
+  height: 150px;
+  margin-top: 25px;
+}
+
+.caption {
+  background-color: black;
+}
