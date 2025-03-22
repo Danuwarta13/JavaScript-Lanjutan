@@ -12,8 +12,6 @@ const el1 = `<div class="mhs">
     <span class="nrp">${mhs1.nrp}</span>
 </div>`;
 
-document.body.innerHTML = el1;
-
 ///////////////////////////////////////////////////////////
 
 // 2. Looping
@@ -44,8 +42,6 @@ const el2 = `<div class="mhs">
               .join("")}
         </div>`;
 
-document.body.innerHTML = el2;
-
 ///////////////////////////////////////////////////////////
 
 // 3. Conditionals
@@ -75,7 +71,6 @@ const el3 = `<div class="lagu">
       )
       .join("")}
 </div>`;
-document.body.innerHTML = el3;
 
 ///////////////////////////////////////////////////////////
 
