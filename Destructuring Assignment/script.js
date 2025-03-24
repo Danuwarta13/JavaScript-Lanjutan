@@ -152,6 +152,86 @@ function getIdMhs({ id }) {
   return id;
 }
 
-console.log(getIdMhs(mhs)); // 13
+// console.log(getIdMhs(mhs)); // 13
 
 ////////////////////////////////////////////////
+
+/////////////// Destructuring Function return value ///////////////
+
+function penjumlahanPerkalian(a, b) {
+  return [a + b, a * b];
+}
+
+// Mengunakan cara biasa
+
+const jumlah = penjumlahanPerkalian(2, 3)[0];
+const perkalian = penjumlahanPerkalian(2, 3)[1];
+// console.log(jumlah); // 5
+// console.log(perkalian); // 6
+
+////////////////////////////////////////////////
+
+// Menggunakan Destructuring
+
+// function penjumlahanPerkalian(a, b) {
+//   return [a + b, a * b];
+// }
+
+const [jumlah2, perkalian2] = penjumlahanPerkalian(2, 3);
+// console.log(jumlah2); // 5
+// console.log(perkalian2); // 6
+
+////////////////////////////////////////////////
+
+// Memberi Default Value
+
+function kalkulasi(a, b) {
+  return [a + b, a - b, a * b];
+}
+
+// Nilai variabel harus Urut sesuai dengan return value pada function jika menggunakan Array
+const [tambah, kurang, kali, bagi = "Tidak ada"] = kalkulasi(2, 3);
+// console.log(bagi);
+
+////////////////////////////////////////////////
+
+// Menggunakan Object pada Destructuring Function
+
+function kalkulasi2(a, b) {
+  return {
+    diTambah: a + b,
+    diKurang: a - b,
+    diKali: a * b,
+    diBagi: a / b,
+  };
+}
+
+// Nilai variabel tidak harus urut dengan return value pada function jika menggunakan object
+const { diTambah, diKurang, diBagi, diKali } = kalkulasi2(2, 3);
+// console.log(diKurang); // -1
+
+////////////////////////////////////////////////
+
+/////////////// Destructuring Function Arguments ///////////////
+
+const mhs2 = {
+  nama: "Rhinozzz",
+  umur: 20,
+  email: "Rhinozz969@gmail.com",
+  nilai: {
+    tugas: 99,
+    uts: 98,
+    uas: 97,
+  },
+};
+
+// Tanpa Destructuring
+function cetakMhs(mhs2) {
+  return `Halo, nama saya ${mhs2.nama}, saya berumur ${mhs2.umur} tahun.`;
+}
+
+// Menggunakan Destructuring
+function cetakMhs2({ nama, umur, nilai: { tugas, uts, uas } }) {
+  return `Halo, nama saya ${nama}, saya berumur ${umur} tahun, dan nilai uas saya adalah ${uas}.`;
+}
+console.log(cetakMhs2(mhs2));
