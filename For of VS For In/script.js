@@ -50,7 +50,7 @@ liNama.forEach((n) => console.log()); // (n.innerHTML / n.textContent)
 
 // Menggunakan For...of
 for (const ln of liNama) {
-  console.log(); // (n.innerHTML / n.textContent)
+  console.log(); // (ln.innerHTML / ln.textContent)
 }
 
 /////////////// Arguments ///////////////
