@@ -88,7 +88,7 @@ const film = new Promise((resolve) => {
   setTimeout(() => {
     resolve([
       {
-        jdudl: "Avengers",
+        judul: "Avengers",
         sutradara: "Rhinozzz",
         pemeran: "Yanto, Yanti",
       },
