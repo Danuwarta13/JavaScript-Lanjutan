@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////
 
-///// Menggunakan JQuery /////
+///// Request API Menggunakan JQuery /////
 
 $.ajax({
   url: "http://www.omdbapi.com/?apikey=dca61bcc&s=avengers",
@@ -11,7 +11,7 @@ $.ajax({
 
 ////////////////////////////////////////////////////////////////////////
 
-///// Menggunakan Vanila Javascript /////
+///// Request API Menggunakan Vanila Javascript /////
 
 let xhr = new XMLHttpRequest();
 
@@ -28,7 +28,7 @@ xhr.send();
 
 ////////////////////////////////////////////////////////////////////////
 
-///// Menggunakan Fetch /////
+///// Request API  Menggunakan Fetch /////
 
 fetch("http://www.omdbapi.com/?apikey=dca61bcc&s=avengers");
 //   .then((response) => response.json())
