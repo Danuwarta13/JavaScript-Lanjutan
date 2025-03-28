@@ -1,0 +1,30 @@
+[
+  {
+    "nama": "Sandika Galih",
+    "nrp": "11223344",
+    "email": "sandikagali@gmial.com",
+    "jurusan": "Teknik Informatika",
+    "idDosenWali": 1
+  },
+  {
+    "nama": "Rhinozz",
+    "nrp": "969",
+    "email": "Rhinozzz@gmial.com",
+    "jurusan": "Seni",
+    "idDosenWali": 2
+  },
+  {
+    "nama": "Muchalim Danu Warta",
+    "nrp": "210103104",
+    "email": "danuwrt@gmial.com",
+    "jurusan": "Teknik Informatika",
+    "idDosenWali": 1
+  },
+  {
+    "nama": "Yanto",
+    "nrp": "69",
+    "email": "yantoh@gmial.com",
+    "jurusan": "Teknik aja",
+    "idDosenWali": 3
+  }
+]
