@@ -91,7 +91,9 @@ function success(results) {
   mhs.forEach((m) => console.log(m.nama));
 }
 
-function error() {}
+function error(e) {
+  console.log(e.responseText);
+}
 
 // Menggunakan Function Dek
 // getDataMahasiswa("data/mahasiswa.json", success, error);
