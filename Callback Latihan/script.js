@@ -1,27 +1,29 @@
-$.ajax({
-  url: "http://www.omdbapi.com/?apikey=57729575&s=iron man",
-  success: (response) => {
-    const move = response.Search;
-    let cards = "";
-    move.forEach((m) => {
-      cards += showCards(m);
-    });
-    $(".move-container").html(cards);
-
-    // Ketika Tombol Details di-klik
-    $(".modal-detail-button").click(function (e) {
-      $.ajax({
-        url: "http://www.omdbapi.com/?apikey=57729575&i=" + $(this).data("imdbid"),
-        success: function (m) {
-          const moveDetail = showMoveDetails(m);
-          $(".modal-body").html(moveDetail);
-        },
+$(".search-button").click(function () {
+  $.ajax({
+    url: "http://www.omdbapi.com/?apikey=57729575&s=" + $(".input-key").val(),
+    success: (response) => {
+      const move = response.Search;
+      let cards = "";
+      move.forEach((m) => {
+        cards += showCards(m);
       });
-    });
-  },
-  error: (e) => {
-    console.log(e.responseText);
-  },
+      $(".move-container").html(cards);
+
+      // Ketika Tombol Details di-klik
+      $(".modal-detail-button").click(function (e) {
+        $.ajax({
+          url: "http://www.omdbapi.com/?apikey=57729575&i=" + $(this).data("imdbid"),
+          success: function (m) {
+            const moveDetail = showMoveDetails(m);
+            $(".modal-body").html(moveDetail);
+          },
+        });
+      });
+    },
+    error: (e) => {
+      console.log(e.responseText);
+    },
+  });
 });
 
 function showCards(m) {
