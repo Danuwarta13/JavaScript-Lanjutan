@@ -17,6 +17,9 @@ $(".search-button").click(function () {
             const moveDetail = showMoveDetails(m);
             $(".modal-body").html(moveDetail);
           },
+          error: (e) => {
+            console.log(e.responseText);
+          },
         });
       });
     },
