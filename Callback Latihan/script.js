@@ -32,7 +32,7 @@ $(".search-button").click(function () {
 function showCards(m) {
   return `<div class="w-full px-4 md:w-1/2 xl:w-1/3">
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-5">
-                      <img src="${m.Poster}" alt="programming" class="w-full" />
+                      <img src="${m.Poster}" alt="programming" class="w-full max-h-[600px]" />
                         <div class="py-8 px-6">
                             <h3>
                               <a href="" class="block mb-3 font-semibold text-xl text-dark truncate hover:text-sky-500">${m.Title}</a>
