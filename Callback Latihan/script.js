@@ -1,38 +1,38 @@
-$(".search-button").click(function () {
-  $.ajax({
-    url: "http://www.omdbapi.com/?apikey=57729575&s=" + $(".input-key").val(),
-    success: (response) => {
-      const move = response.Search;
-      let cards = "";
-      move.forEach((m) => {
-        cards += showCards(m);
-      });
-      $(".move-container").html(cards);
+// $(".search-button").click(function () {
+//   $.ajax({
+//     url: "http://www.omdbapi.com/?apikey=57729575&s=" + $(".input-key").val(),
+//     success: (response) => {
+//       const move = response.Search;
+//       let cards = "";
+//       move.forEach((m) => {
+//         cards += showCards(m);
+//       });
+//       $(".move-container").html(cards);
 
-      // Ketika Tombol Details di-klik
-      $(".modal-detail-button").click(function (e) {
-        $.ajax({
-          url: "http://www.omdbapi.com/?apikey=57729575&i=" + $(this).data("imdbid"),
-          success: function (m) {
-            const moveDetail = showMoveDetails(m);
-            $(".modal-body").html(moveDetail);
-          },
-          error: (e) => {
-            console.log(e.responseText);
-          },
-        });
-      });
-    },
-    error: (e) => {
-      console.log(e.responseText);
-    },
-  });
-});
+//       // Ketika Tombol Details di-klik
+//       $(".modal-detail-button").click(function (e) {
+//         $.ajax({
+//           url: "http://www.omdbapi.com/?apikey=57729575&i=" + $(this).data("imdbid"),
+//           success: function (m) {
+//             const moveDetail = showMoveDetails(m);
+//             $(".modal-body").html(moveDetail);
+//           },
+//           error: (e) => {
+//             console.log(e.responseText);
+//           },
+//         });
+//       });
+//     },
+//     error: (e) => {
+//       console.log(e.responseText);
+//     },
+//   });
+// });
 
 function showCards(m) {
   return `<div class="w-full px-4 md:w-1/2 xl:w-1/3">
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-5">
-                      <img src="${m.Poster}" alt="programming" class="w-full max-h-[600px]" />
+                      <img src="${m.Poster}" alt="programming" class="w-full max-h-[600px] md:max-h-[500px]" />
                         <div class="py-8 px-6">
                             <h3>
                               <a href="" class="block mb-3 font-semibold text-xl text-dark truncate hover:text-sky-500">${m.Title}</a>
@@ -65,6 +65,39 @@ function showMoveDetails(m) {
               </div>
             </div> `;
 }
+
+// Menggunakan Fetch
+const searchBtn = document.querySelector(".search-button");
+
+searchBtn.addEventListener("click", function () {
+  const inputKeyWords = document.querySelector(".input-key");
+  fetch("http://www.omdbapi.com/?apikey=57729575&s=" + inputKeyWords.value)
+    .then((response) => response.json())
+    .then((response) => {
+      const movies = response.Search;
+      let cards = "";
+      movies.forEach((m) => {
+        cards += showCards(m);
+      });
+      const moveContainer = document.querySelector(".move-container");
+      moveContainer.innerHTML = cards;
+
+      // Ketika tombol detail di klik
+      const modalDetailBtn = document.querySelectorAll(".modal-detail-button");
+      modalDetailBtn.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const imdbid = this.dataset.imdbid;
+          fetch("http://www.omdbapi.com/?apikey=57729575&i=" + imdbid)
+            .then((response) => response.json())
+            .then((m) => {
+              const moveDetail = showMoveDetails(m);
+              const modalBody = document.querySelector(".modal-body");
+              modalBody.innerHTML = moveDetail;
+            });
+        });
+      });
+    });
+});
 
 function openModal() {
   document.getElementById("modal").classList.remove("hidden");
