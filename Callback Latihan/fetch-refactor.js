@@ -46,6 +46,7 @@ searchBtn.addEventListener("click", async function () {
 
 function getMovies(keywords) {
   return fetch("http://www.omdbapi.com/?apikey=57729575&s=" + keywords)
+    .finally(() => console.log("selesai menunggu"))
     .then((response) => response.json())
     .then((response) => response.Search);
 }
