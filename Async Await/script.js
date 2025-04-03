@@ -11,7 +11,7 @@ const coba = new Promise((resolve) => {
 // Function Promise
 function cobaPromise() {
   return new Promise((resolve, reject) => {
-    const waktu = 2000;
+    const waktu = 5000;
     if (waktu < 5000) {
       setTimeout(() => {
         resolve("selesai");

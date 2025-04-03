@@ -39,16 +39,31 @@ function showMoveDetails(m) {
 const searchBtn = document.querySelector(".search-button");
 
 searchBtn.addEventListener("click", async function () {
-  const inputKeyWords = document.querySelector(".input-key");
-  const movies = await getMovies(inputKeyWords.value);
-  updateUI(movies);
+  try {
+    const inputKeyWords = document.querySelector(".input-key");
+    const movies = await getMovies(inputKeyWords.value);
+    updateUI(movies);
+  } catch (err) {
+    alert(err);
+  }
 });
 
 function getMovies(keywords) {
   return fetch("http://www.omdbapi.com/?apikey=57729575&s=" + keywords)
     .finally(() => console.log("selesai menunggu"))
-    .then((response) => response.json())
-    .then((response) => response.Search);
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then((response) => {
+      // console.log(response);
+      if (response.Response === "False") {
+        throw new Error(response.Error);
+      }
+      return response.Search;
+    });
 }
 
 function updateUI(movies) {
@@ -62,16 +77,26 @@ function updateUI(movies) {
 
 // event Binding
 document.addEventListener("click", async function (e) {
-  if (e.target.classList.contains("modal-detail-button")) {
-    const imdbid = e.target.dataset.imdbid;
-    const moveDetail = await getMoviesDetail(imdbid);
-    updateUIdetail(moveDetail);
+  try {
+    if (e.target.classList.contains("modal-detail-button")) {
+      const imdbid = e.target.dataset.imdbid;
+      const moveDetail = await getMoviesDetail(imdbid);
+      updateUIdetail(moveDetail);
+    }
+  } catch (err) {
+    alert(err);
   }
 });
 
 function getMoviesDetail(imdbid) {
   return fetch("http://www.omdbapi.com/?apikey=57729575&i=" + imdbid)
-    .then((response) => response.json())
+    .then((response) => {
+      // console.log(response);
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
     .then((m) => m);
 }
 
